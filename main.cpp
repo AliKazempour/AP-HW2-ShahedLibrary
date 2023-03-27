@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 enum BookType = {SCIENTIFIC, CRIME, FANTASY, HORROR, CLASSICS};
@@ -79,6 +80,36 @@ public:
         this->name = name;
         this->publisher = publisher;
         this->type = type;
+    }
+};
+class Member
+{
+private:
+    string id;
+    string name;
+    vector<Book> books;
+
+public:
+    void setId(int id)
+    {
+        this->id = id;
+    }
+    int getId()
+    {
+        return id;
+    }
+    void setName(string name)
+    {
+        this->name = name;
+    }
+    string getName()
+    {
+        return name;
+    }
+    Member(string id, string name)
+    {
+        this->id = id;
+        this->name = name;
     }
 };
 
