@@ -198,7 +198,34 @@ private:
         }
     }
 };
-
+class LibrariesHandler
+{
+    vector<Library> ShahedLibrary;
+    void createLibrary(string name, int position)
+    {
+        bool interference = 0;
+        for (int i = 0; i < ShahedLibrary.size(); i++)
+        {
+            if (ShahedLibrary[i].getname == name)
+            {
+                cout << "A library with this name already exists";
+                interference = 1;
+                break;
+            }
+            if (ShahedLibrary[i].getPosition == position)
+            {
+                cout << "There is now a library in this place";
+                interference = 1;
+                break;
+            }
+        }
+        if (interference = false)
+        {
+            Library newlibrary(name, position);
+            ShahedLibrary.push_back(newlibrary);
+        }
+    }
+};
 int main()
 {
     
