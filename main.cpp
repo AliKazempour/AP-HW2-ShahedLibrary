@@ -38,11 +38,50 @@ public:
 
     Publisher(string name, string location)
     {
-        this->name = name this->Location = location
+        this->name = name;
+        this->Location = location;
+    }
+};
+
+class Book
+{
+private:
+    int id;
+    string name;
+    BookType type;
+    Publisher publisher;
+    bool borrowed;
+
+public:
+    void setId(int id)
+    {
+        this->id = id;
+    }
+    int getId()
+    {
+        return id;
+    }
+    void setName(string name)
+    {
+        this->name = name;
+    }
+    string getName()
+    {
+        return name;
+    }
+    void showInfo()
+    {
+        cout << id << ". " << name << endl;
+    }
+
+    Book(string name, Publisher publisher, BookType type)
+    {
+        this->name = name;
+        this->publisher = publisher;
+        this->type = type;
     }
 };
 
 int main()
 {
-    
 }
