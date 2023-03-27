@@ -74,7 +74,10 @@ public:
     {
         cout << id << ". " << name << endl;
     }
-
+    BookType getType()
+    {
+        return type;
+    }
     Book(string name, Publisher publisher, BookType type)
     {
         this->name = name;
@@ -112,7 +115,91 @@ public:
         this->name = name;
     }
 };
+class Library
+{
+private:
+    int id;
+    string name;
+    vector<Book> books;
+    int position;
+
+    Library(string name, int position)
+    {
+        this->name = name;
+        this->position = position;
+    }
+    Book Search(string name)
+    {
+        for (int i = 0; i < books.size(); i++)
+        {
+            if (books[i].name == name)
+            {
+                return books[i];
+            }
+        }
+    }
+    void bookList()
+    {
+        for (int i = 0; i < books.size(); i++)
+        {
+            cout << books[i];
+        }
+    }
+    void addBook(Book book)
+    {
+        books.push_back(book);
+    }
+    void booksType()
+    {
+        cout << "SCIENTIFIC"
+             << "\n";
+        for (int i = 0; i < books.size(); i++)
+        {
+            if (books[i].getType == SCIENTIFIC)
+            {
+                cout << books[i] << "\n";
+            }
+        }
+        cout << "CRIME"
+             << "\n";
+        for (int i = 0; i < books.size(); i++)
+        {
+            if (books[i].getType == SCIENTIFIC)
+            {
+                cout << books[i] << "\n";
+            }
+        }
+        cout << "FANTASY"
+             << "\n";
+        for (int i = 0; i < books.size(); i++)
+        {
+            if (books[i].getType == SCIENTIFIC)
+            {
+                cout << books[i] << "\n";
+            }
+        }
+        cout << "HORROR"
+             << "\n";
+        for (int i = 0; i < books.size(); i++)
+        {
+            if (books[i].getType == SCIENTIFIC)
+            {
+                cout << books[i] << "\n";
+            }
+        }
+        cout << "CLASSICS"
+             << "\n";
+        for (int i = 0; i < books.size(); i++)
+        {
+            if (books[i].getType == SCIENTIFIC)
+            {
+                cout << books[i] << "\n";
+            }
+        }
+    }
+};
 
 int main()
 {
+    
 }
