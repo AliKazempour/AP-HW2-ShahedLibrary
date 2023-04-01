@@ -149,6 +149,10 @@ private:
     {
         books.push_back(book);
     }
+    int position()
+    {
+        return position;
+    }
     void booksType()
     {
         cout << "SCIENTIFIC"
@@ -225,8 +229,32 @@ class LibrariesHandler
             ShahedLibrary.push_back(newlibrary);
         }
     }
+    void addBook(int libId, string name, Publisher publisher, BookType type)
+    {
+        for (int i = 0; i < ShahedLibrary.size(); i++)
+        {
+            if (ShahedLibrary[i].getid() == libId)
+            {
+                Book NewBook(string name, Publisher publisher, BookType type);
+                ShahedLibrary[i].addBook(NewBook);
+                return;
+            }
+        }
+        cout << "No Library exist!!!"
+    }
+    void addBook(int libId, Book book)
+    {
+        for (int i = 0; i < ShahedLibrary.size(); i++)
+        {
+            if (ShahedLibrary[i].getid() == libId)
+            {
+                ShahedLibrary[i].addBook(book);
+                return;
+            }
+        }
+        cout << "No Library exist!!!"
+    }
 };
 int main()
 {
-    
 }
