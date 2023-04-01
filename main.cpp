@@ -202,7 +202,10 @@ private:
 };
 class LibrariesHandler
 {
+private:
     vector<Library> ShahedLibrary;
+
+public:
     void createLibrary(string name, int position)
     {
         bool interference = 0;
@@ -284,14 +287,14 @@ class LibrariesHandler
     }
     vector<Book> filterByType(int libId, BookType type)
     {
-        vector<Book>mybooks;
-        for(int i=0;i<ShahedLibrary.size();i++)
+        vector<Book> mybooks;
+        for (int i = 0; i < ShahedLibrary.size(); i++)
         {
-            if(ShahedLibrary.getid==libId)
+            if (ShahedLibrary.getid == libId)
             {
-                for(int j=0;j<ShahedLibrary[i].bookList.size();j++)
+                for (int j = 0; j < ShahedLibrary[i].bookList.size(); j++)
                 {
-                    if(ShahedLibrary[i].bookList[j].getType()==type)
+                    if (ShahedLibrary[i].bookList[j].getType() == type)
                     {
                         mybooks.push_back(ShahedLibrary[i].bookList[j]);
                     }
@@ -299,6 +302,23 @@ class LibrariesHandler
             }
         }
         return mybooks;
+    }
+    string filterByTypeAndShowInfo(int libId, BookType type)
+    {
+        vector<Book> x = ShahedLibrary.filterByType(int libId, BookType type);
+        string a;
+        int index = 1;
+        for (int i = 0; i < x.size(); i++)
+        {
+            if (x[i].getType == type)
+            {
+                s += to_string(i+1);
+                s += ". ";
+                s += x[i].getName();
+                s += "\n";
+            }
+        }
+        return a;
     }
 };
 int main()
