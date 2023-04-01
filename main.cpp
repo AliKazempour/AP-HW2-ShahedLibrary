@@ -312,7 +312,7 @@ public:
         {
             if (x[i].getType == type)
             {
-                s += to_string(i+1);
+                s += to_string(i + 1);
                 s += ". ";
                 s += x[i].getName();
                 s += "\n";
@@ -320,6 +320,20 @@ public:
         }
         return a;
     }
+    bool borrow(string memberId, int libraryId, string name)
+    {
+    }
+public
+    int size()
+    {
+        int sum = 0;
+        for (int i = 0; i < ShahedLibrary.size(); i++)
+        {
+            x += ShahedLibrary[i].bookList().size();
+        }
+        return sum;
+    }
+    
 };
 int main()
 {
