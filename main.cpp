@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 enum BookType = {SCIENTIFIC, CRIME, FANTASY, HORROR, CLASSICS};
@@ -138,12 +139,9 @@ private:
             }
         }
     }
-    void bookList()
+    vector<book> bookList()
     {
-        for (int i = 0; i < books.size(); i++)
-        {
-            cout << books[i];
-        }
+        return books;
     }
     void addBook(Book book)
     {
@@ -253,6 +251,54 @@ class LibrariesHandler
             }
         }
         cout << "No Library exist!!!"
+    }
+    vector<Book> getAllBooks(int libId)
+    {
+        for (int i = 0; i < ShahedLibrary.size(); i++)
+        {
+            if (ShahedLibrary[i].getId == libId)
+            {
+                return ShahedLibrary[i].bookList();
+            }
+        }
+    }
+
+    string getAllBooksInfo(int libId)
+    {
+        string s;
+        for (int i = ; i < ShahedLibrary.size(); i++)
+        {
+            if (ShahedLibrary[i].getid() == libId)
+            {
+                for (int j = 0; j < ShahedLibrary.bookList.size(); j++)
+                {
+                    s += to_string(j + 1);
+                    s += ". ";
+                    s +=
+                        ShahedLibrary.bookList[j].name;
+                    s += '\n';
+                }
+            }
+        }
+        return s;
+    }
+    vector<Book> filterByType(int libId, BookType type)
+    {
+        vector<Book>mybooks;
+        for(int i=0;i<ShahedLibrary.size();i++)
+        {
+            if(ShahedLibrary.getid==libId)
+            {
+                for(int j=0;j<ShahedLibrary[i].bookList.size();j++)
+                {
+                    if(ShahedLibrary[i].bookList[j].getType()==type)
+                    {
+                        mybooks.push_back(ShahedLibrary[i].bookList[j]);
+                    }
+                }
+            }
+        }
+        return mybooks;
     }
 };
 int main()
