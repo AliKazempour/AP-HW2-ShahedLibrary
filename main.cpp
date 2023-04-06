@@ -3,10 +3,17 @@
 #include <string>
 
 using namespace std;
+double abs(double n)
+{
+    if (n > 0)
+    {
+        return n;
+    }
+    return -n;
+}
 int number_publish = 1;
 int number_library = 1;
 enum BookType = {SCIENTIFIC, CRIME, FANTASY, HORROR, CLASSICS};
-
 class Publisher
 {
 private:
@@ -385,10 +392,67 @@ public
     }
     Library findNearestLibraryByPosition(string name, int position)
     {
-        vector<Library> v for (int i = 0; i < ShahedLibrary.size(), i++)
+        vector<Library> v;
+        for (int i = 0; i < ShahedLibrary[i].size(); i++)
         {
-            
+            for (int j = 0; j < ShahedLibrary[i].bookList().size(); j++)
+            {
+                if (ShahedLibrary[i].bookList()[j].getName() == name)
+                {
+                    v.push_back(ShahedLibrary[i]);
+                    break;
+                }
+            }
         }
+        int index = 0;
+        int curPos = abs(position - v[0].getPosition());
+        string curName = v[0].getName();
+        for (int i = 1; i < v.size(); i++)
+        {
+            if (abs(position - v[i].getPosition()) < curPos || (abs(position - v[i].getPosition()) == curPos && curName > v[i].getName()))
+            {
+                curPos = abs(position - v[i].getPosition());
+                curName = v[i].getName();
+                index = i;
+            }
+        }
+        return v[index];
+    }
+    string findLibrariesHaveBook(string name, int position)
+    {
+        vector<Library> x;
+        for (int i = 0; i < ShahedLibrary.size(), i++)
+        {
+            for (int j = 0; j < ShahedLibrary[i].size(); j++)
+            {
+                if (ShahedLibrary[i].bookList()[j].getName() == name)
+                {
+                    x.push_back(ShahedLibrary[i].bookList()[j]);
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = i; j < n - 1 - i; j++)
+            {
+                if (abs(v[i].getPosition() - position) > abs(v[j].getPosition() - position))
+                {
+                    swap(v[i], v[j]);
+                }
+            }
+        }
+        string s;
+        for (int i = 0; i < v.size(); i++)
+        {
+            s += to_string(i + 1);
+            s += ". ";
+            s += ShahedLibraries[i].getName();
+            s += " ";
+            s += to_string(abs(ShahedLibraries[i].getPosition - position));
+            s += "\n";
+        }
+        return s;
     }
 };
 int main()
