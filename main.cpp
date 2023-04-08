@@ -13,7 +13,14 @@ double abs(double n)
 }
 int number_publish = 1;
 int number_library = 1;
-enum BookType = {SCIENTIFIC, CRIME, FANTASY, HORROR, CLASSICS};
+enum BookType
+{
+    SCIENTIFIC,
+    CRIME,
+    FANTASY,
+    HORROR,
+    CLASSICS
+};
 class Publisher
 {
 private:
@@ -22,6 +29,7 @@ private:
     string Location;
 
 public:
+    Publisher() {}
     void setName(string name)
     {
         this->name = name;
@@ -32,7 +40,7 @@ public:
     }
     void setLocate(string Location)
     {
-        this->Location = location;
+        this->Location = Location;
     }
     string getLocate()
     {
@@ -73,6 +81,7 @@ public:
         this->type = type;
         borrowed = 0;
     }
+    Book() {}
     void setId(int id)
     {
         this->id = id;
@@ -97,8 +106,11 @@ public:
     {
         return type;
     }
-
-    bool getBorrowed() :
+    void setBorrowed(bool Borrowed)
+    {
+        this->borrowed = Borrowed;
+    }
+    bool getBorrowed()
     {
         return borrowed;
     }
@@ -111,11 +123,11 @@ private:
     vector<Book> books;
 
 public:
-    void setId(int id)
+    void setId(string id)
     {
         this->id = id;
     }
-    int getId()
+    string getId()
     {
         return id;
     }
@@ -123,10 +135,15 @@ public:
     {
         this->name = name;
     }
-    Book getBook()
+    void setBook(Book book)
+    {
+        books.push_back(book);
+    }
+    vector<Book> getBook()
     {
         return books;
     }
+
     string getName()
     {
         return name;
@@ -167,7 +184,7 @@ public:
             }
         }
     }
-    vector<book> bookList()
+    vector<Book> bookList()
     {
         return books;
     }
@@ -177,12 +194,12 @@ public:
     }
     void booksType()
     {
-        vector<Book> BooksByType(BookType type)
+        vector<Book> booksType(BookType type);
         {
             vector<Book> v;
             for (int i = 0; i < books.size(); i++)
             {
-                if (books[i].getBookType(== type))
+                if (books[i].getBookType() == type)
                 {
                     v.push_back(books[i]);
                 }
@@ -194,6 +211,10 @@ public:
     int Position()
     {
         return position;
+    }
+    int getId()
+    {
+        return id;
     }
 };
 class LibrariesHandler
@@ -208,13 +229,13 @@ public:
         bool interference = 0;
         for (int i = 0; i < ShahedLibrary.size(); i++)
         {
-            if (ShahedLibrary[i].getname == name)
+            if (ShahedLibrary[i].getName() == name)
             {
                 cout << "A library with this name already exists";
                 interference = 1;
                 break;
             }
-            if (ShahedLibrary[i].getPosition == position)
+            if (ShahedLibrary[i].Position() == position)
             {
                 cout << "There is now a library in this place";
                 interference = 1;
@@ -231,30 +252,30 @@ public:
     {
         for (int i = 0; i < ShahedLibrary.size(); i++)
         {
-            if (ShahedLibrary[i].getid() == libId)
+            if (ShahedLibrary[i].getId() == libId)
             {
                 Book NewBook(string name, Publisher publisher, BookType type);
                 ShahedLibrary[i].addBook(NewBook);
                 return;
             }
         }
-        cout << "No Library exist!!!"
+        cout << "No Library exist!!!";
     }
     void addBook(int libId, Book book)
     {
         for (int i = 0; i < ShahedLibrary.size(); i++)
         {
-            if (ShahedLibrary[i].getid() == libId)
+            if (ShahedLibrary[i].getId() == libId)
             {
                 ShahedLibrary[i].addBook(book);
                 return;
             }
         }
-        cout << "No Library exist!!!"
+        cout << "No Library exist!!!";
     }
     void addMember(string name, string id)
     {
-        for (int i = 0; i < ShahedMembers; i++)
+        for (int i = 0; i < ShahedMembers.size(); i++)
         {
             if (name == ShahedMembers[i].getName())
             {
@@ -271,7 +292,7 @@ public:
         {
             if (ShahedLibrary[i].getId() == libId)
             {
-                return ShahedLibrary[i].bookList;
+                return ShahedLibrary[i].bookList();
             }
         }
     }
@@ -283,12 +304,12 @@ public:
         {
             if (ShahedLibrary[i].getId() == libId)
             {
-                for (int j = 0; j < ShahedLibrary.bookList().size(); j++)
+                for (int j = 0; j < ShahedLibrary[i].bookList().size(); j++)
                 {
                     s += to_string(j + 1);
                     s += ". ";
                     s +=
-                        ShahedLibrary.bookList()[j].name;
+                        ShahedLibrary[i].bookList()[j].getName();
                     s += '\n';
                 }
             }
@@ -300,13 +321,13 @@ public:
         vector<Book> mybooks;
         for (int i = 0; i < ShahedLibrary.size(); i++)
         {
-            if (ShahedLibrary.getid() == libId)
+            if (ShahedLibrary.getId() == libId)
             {
-                for (int j = 0; j < ShahedLibrary[i].bookList.size(); j++)
+                for (int j = 0; j < ShahedLibrary[i].bookList().size(); j++)
                 {
-                    if (ShahedLibrary[i].bookList[j].getType() == type)
+                    if (ShahedLibrary[i].bookList()[j].getType() == type)
                     {
-                        mybooks.push_back(ShahedLibrary[i].bookList[j]);
+                        mybooks.push_back(ShahedLibrary[i].bookList()[j]);
                     }
                 }
             }
@@ -320,12 +341,12 @@ public:
         int index = 1;
         for (int i = 0; i < x.size(); i++)
         {
-            if (x[i].getType == type)
+            if (x[i].getType() == type)
             {
-                s += to_string(i + 1);
-                s += ". ";
-                s += x[i].getName();
-                s += "\n";
+                a += to_string(i + 1);
+                a += ". ";
+                a += x[i].getName();
+                a += "\n";
             }
         }
         return a;
@@ -333,31 +354,31 @@ public:
     bool borrow(string memberId, int libraryId, string name)
     {
         bool b = 0;
-        for (int i = 0; i < ShahedLibrary.size(), i++)
+        for (int i = 0; i < ShahedLibrary.size(); i++)
         {
             if (ShahedLibrary[i].getId() == libraryId)
             {
                 b = 1;
-                for (int j = 0; j < ShahedLibrary[i].bookList.size(), j++)
+                for (int j = 0; j < ShahedLibrary[i].bookList().size(); j++)
                 {
                     if (ShahedLibrary[i].bookList()[j].getName() == name)
                     {
-                        if (ShahedLibrary[i].bookList()[j].getBorrow())
+                        if (ShahedLibrary[i].bookList()[j].getBorrowed())
                         {
                             cout << "Unavaible";
                             return;
                         }
-                        for (int k = 0; i < ShahedMembers.size; k++)
+                        for (int k = 0; i < ShahedMembers.size(); k++)
                         {
-                            if (ShahedMembers[k].getId == memberId)
+                            if (ShahedMembers[k].getId() == memberId)
                             {
-                                if (ShahedMembers[k].getAllBooks().size() == 5)
+                                if (ShahedMembers[k].getBook().size() == 5)
                                 {
                                     cout << "Your roof is full";
                                     return;
                                 }
-                                ShahedMembers[i].getAllBooks().push_back(ShahedLibrary[i].bookList()[j]);
-                                ShahedLibrary[i].bookList()[j].getBorrow() = 1;
+                                ShahedMembers[i].setBook().push_back(ShahedLibrary[i].bookList()[j]);
+                                ShahedLibrary[i].bookList()[j].setBorrowed(1);
                                 return;
                             }
                         }
@@ -370,7 +391,7 @@ public:
     {
         for (int i = 0; i < ShahedLibrary.size(); i++)
         {
-            if (ShahedLibrary[i].GetId() == libraryId)
+            if (ShahedLibrary[i].getId() == libraryId)
             {
                 for (int j = 0; j < ShahedMembers.size(); j++)
                 {
@@ -389,13 +410,14 @@ public:
             }
         }
     }
-public
+
+public:
     int size()
     {
         int sum = 0;
         for (int i = 0; i < ShahedLibrary.size(); i++)
         {
-            x += ShahedLibrary[i].bookList().size();
+            sum += ShahedLibrary[i].bookList().size();
         }
         return sum;
     }
