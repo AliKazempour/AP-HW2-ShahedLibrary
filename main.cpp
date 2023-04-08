@@ -123,6 +123,10 @@ public:
     {
         this->name = name;
     }
+    Book getBook()
+    {
+        return books;
+    }
     string getName()
     {
         return name;
@@ -148,6 +152,10 @@ public:
         this->position = position;
         id = number_library;
         number_library++;
+    }
+    string getName()
+    {
+        return name;
     }
     Book Search(string name)
     {
@@ -406,13 +414,13 @@ public
             }
         }
         int index = 0;
-        int curPos = abs(position - v[0].getPosition());
+        int curPos = abs(position - v[0].Position());
         string curName = v[0].getName();
         for (int i = 1; i < v.size(); i++)
         {
-            if (abs(position - v[i].getPosition()) < curPos || (abs(position - v[i].getPosition()) == curPos && curName > v[i].getName()))
+            if (abs(position - v[i].Position()) < curPos || (abs(position - v[i].Position()) == curPos && curName > v[i].getName()))
             {
-                curPos = abs(position - v[i].getPosition());
+                curPos = abs(position - v[i].Position());
                 curName = v[i].getName();
                 index = i;
             }
@@ -433,9 +441,9 @@ public
                 }
             }
         }
-        for (int i = 0; i < n - 1; i++)
+        for (int i = 0; i < x.size() - 1; i++)
         {
-            for (int j = i; j < n - 1 - i; j++)
+            for (int j = i; j < x.size() - 1 - i; j++)
             {
                 if (abs(x[i].Position() - position) > abs(x[j].Position() - position))
                 {
@@ -450,7 +458,7 @@ public
             s += ". ";
             s += ShahedLibrary[i].getName();
             s += " ";
-            s += to_string(abs(ShahedLibrary[i].Position()- position));
+            s += to_string(abs(ShahedLibrary[i].Position() - position));
             s += "\n";
         }
         return s;
