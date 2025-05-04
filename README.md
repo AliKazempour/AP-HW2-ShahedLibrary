@@ -1,6 +1,6 @@
-# 📚 Shahid Unified Library System
+# 📚 Shahed Unified Library System
 
-Welcome to the **Shahid University Library System**, a unified platform designed to help students instantly find and borrow books from *any* department library across campus — all from a single place.
+Welcome to the **Shahed University Library System**, a unified platform designed to help students instantly find and borrow books from *any* department library across campus — all from a single place.
 
 ---
 
